@@ -1,0 +1,35 @@
+function GA_Event_Track(argSource,argEventSource,argClick){
+
+	if(argClick==undefined || argClick=='click')
+		argClick="Click";
+
+	var model_name='';
+	switch(argSource){
+		case 'FSrh':
+		case 'searchFeatureProfile': model_name='SearchFeatureProfile'; break;
+		case 'SL': model_name='ShortList'; break;
+		case 'PL': model_name='Photo_Like';	break;
+		case 'BK': model_name='Block';	break;
+		case 'search': model_name='Search'; break;
+		case 'recentupdates': model_name='RecentUpdates'; break;
+		case 'mutualmatch': model_name='MutualMatch'; break;
+		case 'lookingforme': model_name='LookingForMe'; break;
+		case 'matchwatcharchive': model_name='MatchWatchArchive'; break;
+		case 'similarprofiles': model_name='SimilarProfiles'; break;
+		case 'yettobeviewed': model_name='YettoBeViewed'; break;
+		case 'viewednotcontacted': model_name='ViewedNotContacted'; break;
+		case 'latestmatches': model_name='LatestMatches'; break;
+		default: 
+			model_name=argSource; 
+			break;
+	}
+	switch(argEventSource){
+		case 'masv':event_source='Mark_As_Viewed';break;
+		default:event_source=argEventSource;break;
+	}
+	
+	if(GoogleAnalyticKeyvar){
+	    eval('ga(\'send\', \'event\', \''+model_name+'\', \''+argClick+'\',\''+event_source+'\')');
+	}
+	eval('ga(\'consolidate.send\', \'event\', \''+model_name+'\', \''+argClick+'\',\''+event_source+'\')');
+}

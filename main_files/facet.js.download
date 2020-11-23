@@ -1,0 +1,337 @@
+var tempX = 0;
+var tempY = 0;
+var maxAnnualvalue=0;
+if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)){ //test for MSIE x.x;
+	BROWSERTAG = 1;
+ var ieversion=new Number(RegExp.$1) // capture x.x portion and store as a number
+ if (ieversion>=8)
+	BROWSERTAG = 2;
+ else if (ieversion>=7)
+	BROWSERTAG = 2;
+ else if (ieversion>=6)
+	BROWSERTAG = 1;
+ else if (ieversion>=5)
+	BROWSERTAG = 1;
+} else {
+	BROWSERTAG = 2;
+}	
+moreAjaxObj = false;
+
+function faceannuIncome(formobj,flag){
+	var sf=eval("this.document."+formobj);
+	var ann1sel = parseInt(sf.annualIncome.selectedIndex);
+	
+	var annualIncome_Country = $("#AnnualIncome_Country").val();
+	if(annualIncome_Country != 98 && annualIncome_Country!='') {maxAnnualvalue = 16;}
+	else { maxAnnualvalue = 29;}
+	if(sf.annualIncome.options[ann1sel].value>=2 && sf.annualIncome.options[ann1sel].value< maxAnnualvalue){
+		$("#ann1").css("display","block");
+		$("#annualIncomeerr").css("display","none");
+		if(flag==''){sf.annualIncome1.options[ann1sel+1].selected = true;}
+		return faceannuIncome1(formobj);
+	}else{
+		$("#ann1").css("display","none");
+		$("#annualIncomeerr").css("display","none");
+		return true;
+	}
+}
+
+function faceannuIncome1(formobj){
+	var sf=eval("this.document."+formobj);
+	if(parseFloat(sf.annualIncome.options[sf.annualIncome.selectedIndex].value) >= parseInt(sf.annualIncome1.options[sf.annualIncome1.selectedIndex].value)){
+		$("#annualIncomeerr").css("display","block");
+		$("#annualIncomeerr").html('Sorry, invalid annual income range.');
+		return false;
+	}else{
+		$("#annualIncomeerr").html('');
+		$("#annualIncomeerr").css("display","none");
+		return true;
+	}
+}
+
+function showMore(facetpart, f_cur_obj){
+	if(cook_id==''){
+		seoAjaxRegForm(4,'default');
+		$("#total_div_popup").html(sr_tot_recs);
+	}else{
+		var marTop;
+		var srchFrm	= document.frmSearchConds;
+		var dispPg  = srchFrm.disppgval.value;
+		$("#more_opt").css("display","block");
+		var x=$("#"+f_cur_obj).get(0);
+		var f_more_top=findPosY(x);
+		if(BROWSERTAG == 1)
+			marTop = tempY;
+		else
+			marTop = tempY;
+		
+		document.getElementById('more_opt').style.top=f_more_top+10+"px";
+		if(dispPg == '1'){
+			moreAjaxUrl = ser_url+"/sphinx/faceting_more.php?&rand="+Math.random()+"&tk=more"+facetpart.charAt(0).toUpperCase()+facetpart.slice(1);
+	  // For Tracking purpose by the Apache server
+			param = 'wc='+srchFrm.wc.value+'&srchby='+facetpart;
+			param += '&casteTxt='+srchFrm.casteTxt.value+'&subcasteTxt='+srchFrm.subcasteTxt.value+'&gothramTxt='+srchFrm.gothramTxt.value+'&newprofile='+srchFrm.newprofile.value+'&profileCreated='+srchFrm.profileCreated.value+'&srchByAnnualIncomeType='+srchFrm.srchByAnnualIncomeType.value;  
+                        if(srchFrm.Shudda_jathagham){
+                            param +='&Shudda_jathagham='+srchFrm.Shudda_jathagham.value;
+                        }
+		}else if(dispPg == '2'){
+			param	= 'wc='+srchFrm.wc.value+'&profiletype='+srchFrm.profiletype.value+'&viewtype='+srchFrm.viewtype.value+'&excludefields='+srchFrm.excludefields.value+'&vat='+srchFrm.vat.value+'&srchby='+facetpart;
+			param += '&casteTxt='+srchFrm.casteTxt.value+'&subcasteTxt='+srchFrm.subcasteTxt.value+'&gothramTxt='+srchFrm.gothramTxt.value;
+			param += '&premium='+document.frmSearchConds.premiummembers.value;
+                        if(srchFrm.Shudda_jathagham){
+                            param +='&Shudda_jathagham='+srchFrm.Shudda_jathagham.value;
+                        }
+			moreAjaxUrl = ser_url+"/sphinx/msfaceting_more.php?&rand="+Math.random()+"&tk=more"+facetpart.charAt(0).toUpperCase()+facetpart.slice(1);
+		}else if(dispPg == '3' || dispPg == '4'){
+			moreAjaxUrl = ser_url+"/sphinx/mutualmatch_faceting_more.php?&rand="+Math.random()+"&tk=more"+facetpart.charAt(0).toUpperCase()+facetpart.slice(1);
+			param = 'wc='+srchFrm.wc.value+'&srchby='+facetpart+'&facetingfor='+dispPg;
+			param += '&casteTxt='+srchFrm.casteTxt.value+'&subcasteTxt='+srchFrm.subcasteTxt.value+'&gothramTxt='+srchFrm.gothramTxt.value; 
+                        if(srchFrm.Shudda_jathagham){
+                            param +='&Shudda_jathagham='+srchFrm.Shudda_jathagham.value;
+                        }
+		}
+		
+		requestUrl		= moreAjaxUrl;      
+		dataValue		= param
+		type		    = 'post';
+		dataType        = '';
+		callBackFn		= loadMoreOpts;
+		loadingDivId	= '';
+		ajaxrequest(type,dataValue,requestUrl,dataType,callBackFn,loadingDivId); 
+	}
+}
+
+function loadMoreOpts(response){
+	$('#facetMoreContainer').html('<div align="center"><img src="'+imgs_url+'/loadingicon.gif" border="0"></div>');
+	if(response == "")
+		closeMore();
+	$('#facetMoreContainer').html(response);
+}
+
+function closeMore(){
+	$("#more_opt").css("display","none");
+	$('#facetMoreContainer').html('<div align="center"><img src="'+imgs_url+'/loadingicon.gif" border="0"></div>');
+}
+
+function moreSubmit(mName, mType){
+	mpostVal = '';
+	if(mType=='separate'){
+		eleNameFrom = eval('document.frmMoreFacet.'+mName+'From');
+		eleNameTo   = eval('document.frmMoreFacet.'+mName+'To');
+		if(mName=='age'){
+			CondStAge = (selGender==1) ?  MStAge : FMStAge;
+			if(eleNameTo.value<eleNameFrom.value){
+				$('#'+mName+'err').html('Sorry, invalid age range');
+				return false;
+			}else if ((parseInt(eleNameTo.value) - parseInt(eleNameFrom.value)) > 22) {
+				$('#'+mName+'err').html('The difference between a partner\'s "From" and "To" age should not exceed 22 years.');
+				return false;
+			}else if(eleNameFrom.value>=CondStAge && eleNameTo.value<=70){
+				mpostVal = 'ageFrom='+eleNameFrom.value+'#^#ageTo='+eleNameTo.value;
+			} else{
+				$('#'+mName+'err').html('Sorry, invalid age (Min. age is '+CondStAge+'. Max. age is 70).');
+				return false;
+			}
+		}else if(mName=='height'){
+			mheightVal1 = 0;
+			cntVal = eleNameFrom.length;
+			for(i=0; i<cntVal; i++){
+				if(eleNameFrom.options[i].selected== true){
+					mheightVal1 = eleNameFrom.options[i].value;break;
+				}
+			}
+
+			for(i=0; i<cntVal; i++){
+				if(eleNameTo.options[i].selected== true){
+					mheightVal2 = eleNameTo.options[i].value;break;
+				}
+			}
+			if(mheightVal1>=121.92 && mheightVal2<=241.30 && mheightVal1<=mheightVal2){
+				mpostVal = 'heightFrom='+mheightVal1+'#^#heightTo='+mheightVal2;
+			}else{
+				$('#'+mName+'err').html('Sorry, invalid height range.');
+				return false;
+			}
+		}
+	}else if(mName=='annualIncome'){
+		eleNameFrom = eval('document.frmMoreFacet.'+mName);
+		eleNameTo   = eval('document.frmMoreFacet.'+mName+'1');
+		mannualVal = 0;
+		mannualVal1= 0;
+		cntVal = eleNameFrom.length;
+		for(i=0; i<cntVal; i++){
+			if(eleNameFrom.options[i].selected== true){
+				mannualVal = parseFloat(eleNameFrom.options[i].value);break;
+			}
+		}
+
+		for(i=0; i<cntVal; i++){
+			if(eleNameTo.options[i].selected== true){
+				mannualVal1 = parseFloat(eleNameTo.options[i].value);break;
+			}
+		}
+		var annualIncome_Country = $("#AnnualIncome_Country").val();
+		if(annualIncome_Country != 98 && annualIncome_Country!='') {maxAnnualvalue = 16;}
+		else { maxAnnualvalue = 29;}
+		if(mannualVal>1 && mannualVal1<=maxAnnualvalue && mannualVal<mannualVal1){
+			mpostVal = mannualVal+'~'+mannualVal1;
+		}else if(mannualVal==maxAnnualvalue){
+			mpostVal = mannualVal+'~';
+		}else if(mannualVal==1){
+			mpostVal = mannualVal+'~';
+		}else if(mannualVal==0){
+			mpostVal = mannualVal+'~';
+		}else{
+			$('#'+mName+'err').html('Sorry, invalid annual income range.');
+			return false;
+		}
+	}else if(mType=='profiletypechk'){
+		var phoChk = 0; horoChk=0;
+		if(document.frmMoreFacet.photoOpt != null){
+			if(document.frmMoreFacet.photoOpt.checked == true){
+				mpostVal = 'photoOpt=1#^#';
+				phoChk = 1;
+			}else{
+				mpostVal = 'photoOpt=0#^#';
+			}
+		}
+		if(document.frmMoreFacet.horoscopeOpt != null){
+			if(document.frmMoreFacet.horoscopeOpt.checked == true){
+				mpostVal += 'horoscopeOpt=1';
+				horoChk = 1;
+			}else{
+				mpostVal += 'horoscopeOpt=0';
+			}
+		}
+
+		/*if(phoChk==0 && horoChk==0){
+			$('#'+mName+'err').html('Sorry, please select any of the given option.');
+			return false;
+		}*/
+	}else if(mType=='activeChk'){
+		radCnt = document.frmMoreFacet.activeOpt.length;
+		if(radCnt==undefined){ // Added By Senthilnath On 05-01-2012, regarding when there is only One option.
+			if(document.frmMoreFacet.activeOpt.checked == true){
+				mpostVal = document.frmMoreFacet.activeOpt.value;
+			}
+		}
+		for(i=0; i<radCnt; i++){
+			if(document.frmMoreFacet.activeOpt[i].checked == true){
+				mpostVal = document.frmMoreFacet.activeOpt[i].value;
+			}
+		}
+		if(mpostVal == ''){
+			$('#'+mName+'err').html('&nbsp;&nbsp;Sorry, please select any of the given option.');
+			return false;
+		}
+	}else if(mType=='physicalChk'){
+		radCnt = document.frmMoreFacet.physicalStatus.length;
+		for(i=0; i<radCnt; i++){
+			if(document.frmMoreFacet.physicalStatus[i].checked == true){
+				mpostVal = document.frmMoreFacet.physicalStatus[i].value;
+			}
+		}
+
+		if(mpostVal == ''){
+			$('#'+mName+'err').html('&nbsp;&nbsp;Sorry, please select the physical status.');
+			return false;
+		}
+	} else if(mType=='Shudda_jathaghamChk'){
+		mpostVal = $('input[name=Shudda_jathagham]:checked', '#MoreShuddajathagham').val();
+		if(mpostVal == ''){
+			$('#'+mName+'err').html('&nbsp;&nbsp;Sorry, please select the Suddha Jathagam status.');
+			return false;
+		} 
+	} else if(mType=='Selectbox'){
+		eleName = eval('document.frmMoreFacet.'+mName);
+		cntVal = eleName.length;
+		for(i=0; i<cntVal; i++){
+			if(eleName.options[i].selected== true){
+				mpostVal = eleName.options[i].value;break;
+			}
+		}
+
+		if(mpostVal == ''){
+			$('#'+mName+'err').html('Sorry, please select any of the given option.');
+			return false;
+		}
+	}else if(mType=='MultiSelectbox'){
+		eleName = eval('document.frmMoreFacet.'+mName);
+		cntVal = eleName.length;
+		for(i=0; i<cntVal; i++){
+
+			if(eleName.options[i].value!=''){
+				mpostVal += eleName.options[i].value+'~';
+			}
+		}
+
+		/*if(mpostVal == ''){
+			$('#'+mName+'err').html('Sorry, please select any of the given option.');
+			return false;
+		}*/
+	}else if(mType=='Checkbox'){
+		eleName = eval('document.frmMoreFacet.'+mName);
+		cntVal = eleName.length;
+		for(i=0; i<cntVal; i++){
+			if(eleName[i].checked== true){
+				mpostVal += eleName[i].value+'~';
+			}
+		}
+
+		if(mpostVal==''){
+			if(eleName.checked== true){
+				mpostVal += eleName.value;
+			}
+		}
+
+		/*if(mpostVal == ''){
+			$('#'+mName+'err').html('&nbsp;Sorry, please select any of the given option.');
+			return false;
+		}*/
+	}
+
+	if(mName!=''){
+		submitFrmFacet(mName, mpostVal);
+	}
+}
+
+function submitFrmFacet(eleName, eleVal){
+	if(cook_id==''){
+		seoAjaxRegForm(4,'default');
+		$("#total_div_popup").html(sr_tot_recs);
+	}else{
+		if(eleName=='age' || eleName=='height' || eleName=='profiletype'){
+			document.frmSearchConds.newval.value = eleVal;
+		}else if(eleName=='annualIncome'){
+			var annualVal = new Array();
+			annualVal = eleVal.split('~');
+			document.frmSearchConds.newval.value = 'annualIncome='+annualVal[0]+'#^#annualIncome1='+annualVal[1];
+		}else{ 
+			document.frmSearchConds.newval.value = eleName+'='+eleVal;
+		}	
+			// For Refine search - Annual income currency based on country selected
+			if(eleName=='country'){
+				var countryVal = new Array();
+				countryVal = eleVal.split('~');
+				if(countryVal != ''){
+				var found = $.inArray('98', countryVal);
+
+				if(found < 0){
+					var found = $.inArray('0', countryVal);
+				}
+				if(found < 0){
+					$("#srchByAnnualIncomeType").val(222);
+				}else{
+					$("#srchByAnnualIncomeType").val(98);
+				}
+				}else{$("#srchByAnnualIncomeType").val(98);}
+			}
+		if(mod_name=='yettobeviewed')
+			premiummembers = "&premium="+document.frmSearchConds.premiummembers.value;
+		else
+			premiummembers ='';
+
+		document.frmSearchConds.action=window.location.pathname+'?rand='+Math.random()+"&tk="+eleName+premiummembers; // For Tracking purpose by the Apache server
+		document.frmSearchConds.submit();
+	}
+}

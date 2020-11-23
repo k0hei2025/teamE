@@ -1,0 +1,43 @@
+function forgotPasswordValidate()
+{
+	var a=document.getElementById('forgotpwd').value;
+	if (a=='')
+	{	
+		document.getElementById("error").innerHTML="Please enter the Matrimony ID / E-mail";
+		return false;
+	}
+}
+
+function litebox(id,w){
+	objId(id).style.display = "block";
+	var lft = document.body.clientWidth/2 - w/2;
+	objId(id).style.left = lft+"px";
+	objId('fade').style.display = "block";
+	objId('fade').style.height = document.body.scrollHeight+'px';
+	 var val=parseInt(document.body.offsetWidth)-4;
+	objId('fade').style.width=val+'px';
+	window.scrollTo(0,0);
+}
+
+function closelitebox(id){
+	objId(id).style.display = "none";
+	objId('fade').style.display = "none";
+
+	if(id=='forgetpwd')
+	{document.getElementById('error').innerHTML='';
+	}
+}
+
+function objId(obj){
+	if(document.getElementById){
+		if(document.getElementById(obj)!=null){return document.getElementById(obj)}else{return "";}
+	}else if(document.all){
+		if(document.all[obj]!=null){return document.all[obj]}else{return "";}
+	}
+}
+
+function chkgender(g)
+{ 
+	if (g=="f") { document.RSearchForm.ageFrom.value="18"; document.RSearchForm.ageTo.value="30"; }
+	if (g=="m") { document.RSearchForm.ageFrom.value="21"; document.RSearchForm.ageTo.value="33"; }
+}

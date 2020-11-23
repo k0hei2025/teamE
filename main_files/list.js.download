@@ -1,0 +1,228 @@
+var objAjax1=null;var parameters="";var listdiv='';var listdivno='';var thrusearch='';ajax_request_made=false; 
+
+/*function lisatadd1(purpose,oppmatid,divid,cldivid,glbdivid,listcpno,paid_status) {
+	//alert('purpose: '+purpose+'  oppmatid:'+oppmatid+'  divid:'+divid+'  cldivid:'+cldivid +'glbdivid:'+glbdivid+'  listcpno:'+listcpno+'  paid_status:'+paid_status);
+	frmlist = document.listfrm;
+	thrusearch = '';
+	listdiv	= divid;
+
+    closedivid=cldivid;
+	globaldivid='';
+	globaldivid=glbdivid;
+	listdivno = listcpno;
+	
+	if(paid_status == 1 || paid_status == 0){
+		dataValue = 'id='+oppmatid+'&purp='+purpose+'&divno='+listdivno+'&purpose=who&paid='+paid_status;
+	}
+	else{
+		dataValue = 'id='+oppmatid+'&purp='+purpose+'&divno='+listdivno;
+	}
+	requestUrl		= ser_url+'/list/listadd.php?rno='+Math.random();
+	type  = 'post';
+	dataType  ='';
+	loadingDivId ='';
+	callBackFnc=listresDiv;
+	if(ajax_request_made == false)	
+         ajaxrequest(type,dataValue,requestUrl,dataType,callBackFnc,loadingDivId);	
+
+	jQuery('#'+closedivid).css("display","block"); 
+    jQuery('#'+globaldivid).css("display","block"); 
+	jQuery('#fade').css("display","block"); 
+	llMsg(closedivid);floatdiv(closedivid,lpos,100).floatIt();
+}*/
+
+function lisatadd(purpose,oppmatid,divid,listcpno) {
+	frmlist = document.listfrm;
+	thrusearch = '';
+	listdiv	= divid;
+	listdivno = listcpno;
+	objAjax1 = AjaxCall();
+	parameters = 'id='+oppmatid+'&purp='+purpose+'&divno='+listdivno;
+    var argUrl = ser_url+'/list/listadd.php?ls='+Math.random();
+	AjaxPostReq(argUrl,parameters,listresDiv,objAjax1);
+}
+
+function checkBoxIds(chrt, frm, idname) { 
+	var cval='';
+	for(i=0;i<frm.length;i++) { 
+		if(frm.elements[i].type=='checkbox' && frm.elements[i].name!=idname) { 
+			if(frm.elements[i].checked) {
+				cval+=frm.elements[i].value+chrt;
+			} 
+		} 
+	} 
+	if(cval.length>0) {
+		cval=cval.substring(0,cval.length-1);
+	} 
+	return cval; 
+}
+
+//Added for Message Module
+//To send Multiple request
+function sendMultiRequest(OppMatriId,OppMatriIdName){	
+	reqIds = '';
+    $('.multireqoptions:checked').each(function(){    
+          reqIds += $(this).val()+'~';		  
+    });
+
+	if(reqIds == '')
+	{
+		$('.errortxt').css('display','block');
+	}
+	else{
+	$('.errortxt').css('display','none');
+	requestUrl	= ser_url+'/request/multirequest.php?rno='+Math.random();page=1;	        
+	dataValue	= 'OppMatriId='+OppMatriId+'&ReqIds='+reqIds+'&OppMatriIdName='+OppMatriIdName;
+	type ='post';
+	callBackFn = responseWithPopup;
+	dataType ='';
+	loadingDivId ='lightpic';//alert(dataValue);
+	ajaxrequest(type,dataValue,requestUrl,dataType,callBackFn,loadingDivId);
+	}   
+}
+
+function checkBoxMultiReqIds(chrt, frm, idname) { 
+	var cval='';
+	for(i=0;i<frm.length;i++) { 
+		if(frm.elements[i].type=='checkbox' && frm.elements[i].name!=idname && frm.elements[i].disabled!=true) { 
+			if(frm.elements[i].checked) {
+				cval+=frm.elements[i].value+chrt;
+			} 
+		} 
+	} 
+	if(cval.length>0) {
+		cval=cval.substring(0,cval.length-1);
+	} 
+	return cval; 
+}
+
+function listresDiv(response) {
+
+	var resultContent,totalStr,divdisplay='';
+	
+	//if (objAjax1.readyState == 4) {
+	// if (objAjax1.status == 200) {
+
+		 arrResp = response.split('^');
+		 totalStr = arrResp.length;
+		 //alert(totalStr);
+		 if(totalStr >= 3) {
+			 resultContent = arrResp[0]+arrResp[2];
+			 divdisplay	= arrResp[1];
+		 } else {
+			 resultContent = arrResp[0];
+		 }
+		 if(thrusearch == 1) {
+			 jQuery('#'+listalldiv).empty();	
+			 jQuery('#'+listalldiv).html(resultContent);
+			 jQuery('#'+listalldiv).css("display","block"); 
+
+		 } else {
+			 msgact = 'msgactpart'+listdivno;
+			jQuery('#'+msgact).empty();
+			 jQuery('#'+msgact).html(resultContent);
+			 if(divdisplay=='yes') {
+				 $('#bardiv').addClass("disnon");
+				 $('#'+listdiv).addClass("disnon");
+			 }
+		 }
+	// } else 
+	//	 alert('There was a problem with the request.');}
+}
+
+function funListDeleteConfirm() {
+	var listForm = document.buttonfrm;	
+	oppmatid = checkBoxIds('~',listForm,'');
+	var type = document.buttonfrm.purp.value;	
+	if(oppmatid == '') {
+		$('#error_msg').text("Please select atleast one profile");		
+	} else {	
+		if(type=='BK' || type == 'IG')
+			funListDelete();
+		else {
+			$('#error_msg').text("");
+			$('#errorDiv').css('display','block');
+			var errorDivConfirm = $('#errorDivConfirm').html();
+			$('#errorDiv').html(errorDivConfirm) ;
+		}
+		//AjaxCallGA(varGALink,'click',varGALinkAct);
+	}
+}
+
+function funListDelete() {
+	
+	var type = document.buttonfrm.purp.value;
+	if(type != 'BK' && type != 'IG')
+			$('#errorDiv').css('display', 'block');
+
+	if(type=='PL'){
+		var parameters = 'tomatriids='+oppmatid+'&type=delete&from=pldel&'+Math.random();
+		var RequestUrl	=	ser_url+'/list/likeaction.php?'+parameters; 
+	}else{
+		var parameters = 'id='+oppmatid+'&purp='+document.buttonfrm.purp.value+"&"+Math.random();
+		var RequestUrl	=	ser_url+'/list/listdelete.php?'+parameters; 
+	}
+	$.ajax({
+		url: RequestUrl,
+		type: 'post',
+		dataType: 'html',
+		async: false,
+		success: function(data) {
+			listdelDiv(data);
+		} 
+	})
+}
+
+function funListBlockDelete(oppunblockmatid) {
+	
+	if($('#lightpicphoto') && $('#lightpicphoto').css('display') == 'block') {
+		$('#lightpicphoto').bPopup().close();
+		if(/chrome/.test( navigator.userAgent.toLowerCase() ) || $.browser.msie === true) {
+			$('#lightpicphoto').hide();
+		}
+	}
+	var parameters = 'id='+oppunblockmatid+'&purp='+document.buttonfrm.purp.value+"&"+Math.random();
+	var RequestUrl	=	ser_url+'/list/listdelete.php?'+parameters; 
+	$.ajax({
+		url: RequestUrl,
+		type: 'post',
+		dataType: 'html',
+		async: false,
+		success: function(data) {
+			listdelDiv(data);
+		} 
+	})
+}
+
+function listdelDiv(response) {
+	if(response!=''){
+		var type = document.buttonfrm.purp.value;
+		if(type=='BK' || type == 'IG'){
+			jQuery('#lightpic').empty().html(response);
+			$('#lightpic').bPopup();
+			$('#error_msg').text("");
+		}
+		else
+		{
+			$('#errorDiv').empty();
+			$('#errorDiv').html(response);
+			$('#errorDiv').css('display', 'block');
+		}
+		
+	 } else {
+		 alert('There was a problem with the request.');
+	}
+}
+function sel1(id,msgty,G,cpno,load,paid){
+    var url		= ser_url+'/profiledetail/index.php?act=fullprofilenew';
+	if(paid == 0){
+		param		= '&id='+id+'&option=interest';
+	}
+	else if(paid == 1){
+		param		= '&id='+id+'&option=message';
+	}
+	
+	window.location = url+param;
+	    
+}
+

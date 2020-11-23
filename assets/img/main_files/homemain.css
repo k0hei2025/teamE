@@ -1,0 +1,404 @@
+/*** font face ***/
+@font-face {
+    font-family: 'lato-regular';
+    src: url('//imgs.communitymatrimony.com/cbsstyles/fonts/Lato-Reg-webfont.eot');
+    src: url('//imgs.communitymatrimony.com/cbsstyles/fonts/Lato-Reg-webfont.eot?#iefix') format('embedded-opentype'),
+         url('//imgs.communitymatrimony.com/cbsstyles/fonts/Lato-Reg-webfont.woff') format('woff'),
+         url('//imgs.communitymatrimony.com/cbsstyles/fonts/Lato-Reg-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+body { background: #fff; margin:0px; font-family: Arial, Helvetica, Tahoma; font-size: 12px; color:#404040; line-height:15px; text-decoration:none; text-align:left; align:center;}
+#container {width:989px; margin:0px auto; text-align:left;border:0px solid #ccc }
+form{margin:0px; padding:0px;}
+.bgclr{background:#f8f8f8;}
+.margin-reset{margin:0px auto;}
+.wrapper-max{ width:100%; margin:0px auto;}
+.wrapper{ width:1000px; margin:0px auto;}
+.wrapper-max.top-bg{background: url(//imgs.communitymatrimony.com/cbsimages/home-top-bg.gif) repeat-x top;}
+.festival-logo{padding-top:20px;}
+
+.home-fb-btn {background: #3b5998 url(//imgs.communitymatrimony.com/cbsimages/home-fb-btn-icon.jpg) no-repeat 10px center; padding: 10px 10px 10px 40px; border: 1px solid #2f4a83;  border-radius:3px;  -moz-border-radius:3px;  -webkit-border-radius:3px; color:#fff; display:inline-block; cursor:pointer;vertical-align:middle;}
+
+.title{font-family:'lato-regular'; font-size:30px; color:#8f8f8f; line-height:32px;}
+.reg-title{background: url(//imgs.communitymatrimony.com/cbsimages/home-reg-frm-title-bg.gif) repeat-x bottom; font-family:'lato-regular'; font-size:20px; color:#8f8f8f; font-weight:bold; border-top-left-radius: 8px; border-top-right-radius: 8px; padding: 20px 15px 16px; border-bottom:1px solid #f5f5f5; box-shadow: 0 0 4px #d0d0d0;  margin-top:10px;}
+.reg-title span{color:#94d400;}
+a{text-decoration:none; color:#0274cb;}
+.hp-top-bg{border: 1px solid #d9d9d9; margin: 0 auto; -webkit-box-shadow: -4px 13px 10px -3px #F1F1F1; -moz-box-shadow: -4px 13px 10px -3px #F1F1F1; box-shadow: -4px 13px 10px -3px #F1F1F1;}
+.top-bg-model-bg{background:url(//imgs.communitymatrimony.com/cbsimages/home-model-bg.png) no-repeat bottom center; width: 505px; height:342px;}
+.top-bg-model1{background:url(//imgs.communitymatrimony.com/cbsimages/home-model-img1.jpg) no-repeat bottom center; height:335px;}
+/*.top-bg-model2{background:url(//imgs.communitymatrimony.com/cbsimages/model-img-ss.jpg) no-repeat center center; height:340px;}*/
+
+
+/* form styles*/
+form, fieldset, legend, label, input, textarea, checkbox, option, button, .nobox{  background: transparent; border: 0; font-size: 100%; margin: 0; padding: 0; vertical-align: middle; }
+label{ font-size: 12px;}
+.rdclr{color:#FF0000;}
+
+.fleft{float:left;}
+.fright{float:right;}
+.clear{clear:both;}
+.cleard{clear:both;width:1px;height:1px;}
+.txt-center{text-align:center;} .txt-right{text-align:right;} .txt-left{text-align:left;} .txt-justify{text-align:justify;} .vmiddle{vertical-align:middle;}
+.disblk{display:block;}
+.disnon, .dspnone{display:none;}
+.disin{display: inline;}
+.disinblk{display: inline-block;}
+.posabsolute{position:absolute;} .posrelative{position:relative;}
+.lheight16{line-height:16px !important;}
+
+/* padding styles */
+.padt1{padding-top:1px !important;}
+.padt2{padding-top:2px;}	.padr2{padding-right:2px;} .padb2{padding-bottom:2px;} .padl2{padding-left:2px;} .pad2{padding:2px;} .pad3{padding:3px;}
+.padt4{padding-top:4px;}	.padr4{padding-right:4px;} .padb4{padding-bottom:4px;} .padl4{padding-left:4px;} .pad4{padding:4px;}
+.padt5{padding-top:5px;}	.padr5{padding-right:5px;} .padb5{padding-bottom:5px;} .padl5{padding-left:5px;} .pad5 {padding:5px;}
+.padt7{padding-top:7px;}	.padr7{padding-right:7px;} .padl7{padding-left:7px;} .padb7{padding-bottom:7px;}.pad7{padding:7px;}
+.padt8{padding-top:8px;}	.padr8{padding-right:8px;} .padb8{padding-bottom:8px;} .padl8{padding-left:8px;} .pad8{padding:8px;}
+.padt10{padding-top:10px;} .padr10{padding-right:10px;} .padb10{padding-bottom:10px;} .padl10{padding-left:10px;} .pad10{padding:10px;}
+.padt15{padding-top:15px;} .padr15{padding-right:15px;} .padb15{padding-bottom:15px;} .padl15{padding-left:15px;} .pad15{padding:15px;}
+.padt20{padding-top:20px;} .padr20{padding-right:20px;} .padb20{padding-bottom:20px;} .padl20{padding-left:20px;} .pad20{padding:20px;}
+.padt25{padding-top:25px;} .padr25{padding-right:25px;} .padb25{padding-bottom:25px;} .padl25{padding-left:25px;} .pad25{padding:25px;}
+.padt30{padding-top:30px;} .padr30{padding-right:30px;} .padb30{padding-bottom:30px;} .padl30{padding-left:30px;} .pad30{padding:30px;}
+.padt35{padding-top:35px;} .padr35{padding-right:35px;} .padb35{padding-bottom:35px;} .padl35{padding-left:35px;} .pad35{padding:35px;}
+.padt12{padding-top:12px;} .padt18{padding-top:18px;}   .padt27{padding-top:27px;} .padt40{padding-top:40px;}
+
+/*margin styles*/
+.mrgl3{margin-left:3px;}
+.mrgl5{margin-left:5px;}
+.mrgl23{margin-left:33px;}
+.mrgl24{margin-left:35px;}
+.mrgr5{margin-right:5px;} .mrgr6{margin-right:6px;}
+.mrgr15{margin-right:15px}
+.mrgb20{margin-bottom:20px}
+.bdr1{ border:1px solid #eaeaea;}
+.bdrtb{border-top: 2px solid #fff; border-bottom: 2px solid #fff;}
+.bdrtb1{border-top: 1px solid #e1e1e1; border-bottom: 1px solid #e1e1e1;}
+.bdrb{border-bottom: 1px solid #e1e1e1;}
+.bdr8{border: 6px solid #eae7e7;border-radius:100px;}
+a img.curve{border-radius:100px; border:1px solid #fff; }
+
+.leftPanel{width: 657px; float:left;} .rightPanel{width:325px; float:right;}
+.font11{font-size:11px;} .font12{font-size:12px !important;} .font13{font-size:13px !important;} .font14{font-size:14px !important;} .font15{font-size:15px;} .font16{font-size:16px;} .font17{font-size:17px !important;} .font18{font-size:18px;} .font21{font-size:21px !important;} .font24{font-size:24px !important;} .font27{font-size:27px !important;} .boldtxt {font-weight:bold;}
+.clr9 {color:#999999;} .clrlogo1{color:#ff821c;} .clrlogo2{color:#ff000b;} .clrlogo3{color:#6069ac;} .clrlogo4{color:#ff9000;}
+.clrgreen {color:#56c200;}
+.clrgray{color:#ccc;}
+.clr5{color:#b4b4b4;}
+
+.bgclr1{background-color:#ffffff;}
+.bgclr2{background:#fdfdfd;}
+.bgclr3{background:#f4f4f4;}
+.bgclr4{background:#f8f8f8;}
+.bgclr5{background:#f0f0f0;}
+/*position styles*/
+.pos-relative{position:relative;}
+.bold{font-weight:bold;}
+
+.txtbox { font-size:11px; border: 1px solid #e6e6e6; background: #fff ; font-family:arial, verdana; color:#777777;  padding:3px 0 3px 5px !important;padding:3px 0 2px 5px; width:140px; border-radius:3px;  -moz-border-radius:3px;  -webkit-border-radius:3px; }
+.radio{vertical-align:middle; display:inline; float:none; margin:0px 2px 0px 3px; _margin:0px 1px 0px 1px;}
+
+.medimum-btn, .big-btn {background-color:#94d400; border: 1px solid #90b933 !important; border-radius:3px;  -moz-border-radius:3px;  -webkit-border-radius:3px; display:inline-block; color:#FFF; font-family:arial; font-size:13px; font-weight:bold; padding:6px 15px !important; text-decoration:none; cursor:pointer;margin:0px; outline:none;}
+.reg{background:#ff7805 !important; border: 0px solid #ff7805 !important;}
+a.normal-btn, .normal-btn{background-color:#d2d2d2; border: 1px solid #a7a7a7 !important; border-radius:3px;  -moz-border-radius:3px;  -webkit-border-radius:3px; display:inline-block; color:#FFF; font-family:arial; font-size:14px; font-weight:bold; padding:8px 20px !important; text-decoration:none; cursor:pointer;margin:0px; outline:none;}
+a.normal-btn:hover{background-color:#94d400; border: 1px solid #90b933 !important;}
+
+.big-btn {font-size:16px !important; padding:5px 15px !important; border-radius:3px;  -moz-border-radius:3px;  -webkit-border-radius:3px;}
+.hp-tab-on{background-color: #ffffff; border-top-left-radius: 5px; border-top-right-radius: 5px; padding: 20px 0 15px 0; text-align: center; font-size:18px; box-shadow: 19px 0 20px -25px #CDCDCD inset, inset -21px 0px 25px -25px #cdcdcd;}
+.hp-tab-off{font-size:18px; color:#fff; padding: 17px 40px 13px 25px; -moz-box-shadow: inset 0 0 10px #51a617;    -webkit-box-shadow: inset 0 0 10px #51a617; box-shadow: inset 0 0 10px #51a617;}
+
+#hpreg dd{float:left; font: normal 12px arial, verdana; margin:0px;}
+#hpreg {background: #fff; -moz-box-shadow: 0 2px 4px #d0d0d0; -webkit-box-shadow: 0 2px 4px #d0d0d0; box-shadow: 0 2px 4px #d0d0d0; margin: 0 0; border-radius:8px; border-top-left-radius: 0px !important; border-top-right-radius: 0px !important; min-height:399px;}
+#membership1{margin-right:10px;}
+#hpreg .pad{padding: 10px 10px 15px 20px;}
+#hpreg dl{clear:both; padding: 6px 0 6px; margin:0px;font: normal 11px arial, verdana; display:block; height:23px;color:#000;  height: 25px;  }
+#hpsrc dl{padding: 4px 0 4px !important;}
+#hpreg dt{width: 135px; float:left; padding-top:3px;text-align:left;padding-right:11px; color:#363636; font: bold 13px arial, verdana;}
+#hpreg dd{margin-bottom: 1px !important;float:left; font: normal 11px arial, verdana; margin:0px; color:#797979;}
+#hpreg select, #hpsrc select{ background: none repeat scroll 0 0 #FFF; border: 1px solid #eaeaea; color: #797979; font-family: Arial,Helvetica,Sans-Serif;  font-size: 12px;  margin: 0; width: 270px; padding: 3px 2px 2px 2px; height:25px;vertical-align:top;}
+#hpsrc select{height:32px !important; font-size:13px; padding: 2px 2px 2px 8px;}
+/*#hpreg label, #hpsrc label{ filter:alpha(opacity=90); -moz-opacity:0.9; -khtml-opacity: 0.9; opacity: 0.9;}*/
+select option { padding-left:3px; }
+
+.select-arw{position:relative}
+.select-arw:after{content:" ";border-top:7px solid #a3a5a5;border-left:4px solid transparent;border-right:4px solid transparent;right:6px;top:12px;padding:0;position:absolute;pointer-events:none;}
+.select-arw:before, #hpsrc .select-arw:before{content:'';right:1px;top:1px;width:22px;height:23px;background:#fff;position:absolute;pointer-events:none;display:block}
+.select-arw:before{width:25px}
+.select-arw:after, #hpsrc .select-arw:after{top:10px;right:10px}
+
+#hpsrc .select-arw:before{height:30px;} #hpsrc .select-arw:after{top:14px;}
+#hpsrc .src.select-arw:before{height:30px; top:1px;} #hpsrc .src.select-arw:after{top:12px;}
+#hpsrc .search-input{border: 0px solid #fff !important;}
+
+#hpreg .textfield, #hpsrc .textfield { font-family: Arial, Verdana;  font-size: 12px;  border: 1px solid #eaeaea;  color: #797979;  height: 20px;
+padding: 2px 2px 2px 5px !important; padding-bottom:3px; background-color:#fff; line-height:20px; vertical-align:middle; text-align:left;}
+.wdth50{width:50px !important} .wdth60{width:59px !important} .wdth180{width:180px !important;} .wdth65{width:65px !important} .wdth112{width:112px !important; width:129px;} .wdth103{width:103px !important;} .wdth150{width:150px} .wdth95{width:95px !important;}
+.tiptopArrow{background:url(//imgs.communitymatrimony.com/cbsimages/hp-info-tipArrow.png) no-repeat !important; background:url(//imgs.communitymatrimony.com/cbsimages/hp-info-tipArrow.gif) no-repeat; width:20px; height:11px;}
+.srhres-tooltip{background:#fff; border: 1px solid #00a652; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; -khtml-border-radius: 5px; padding: 5px 8px; box-shadow:3px 4px 4px 1px #888; -moz-box-shadow:3px 4px 4px 1px #888; -webkit-box-shadow:3px 4px 4px 1px #888; -khtml-box-shadow:3px 4px 4px 1px #888;}
+
+.help-icon, .mobile-profile-icon, .mobile-notification-icon, .mobile-search-icon, .mobile-easy-icon, .browsetab-bdr, .ss-nav-on-l, .ss-nav-on-r, .ss-nav-off-l, .ss-nav-off-r {background: url(//imgs.communitymatrimony.com/cbsimages/home-icons.png) no-repeat;}
+.help-icon{background-position:-9px -693px; border: 1px solid #e6e6e6; display:inline-block; width:46px; height:36px; border-radius:3px;  -moz-border-radius:3px;  -webkit-border-radius:3px;}
+.mobile-profile-icon{background-position: -9px -314px ; height:60px; width:60px; display:inline-block; vertical-align:middle;}
+.mobile-notification-icon{background-position: -9px -461px ; height:60px; width:60px; display:inline-block; vertical-align:middle;}
+.mobile-search-icon{background-position: -9px -393px ; height:60px; width:60px; display:inline-block; vertical-align:middle;}
+.mobile-easy-icon{background-position: -9px -538px ; height:60px; width:60px; display:inline-block; vertical-align:middle;}
+.assisted-icons{background: url(//imgs.communitymatrimony.com/cbsimages/home-icons.png) no-repeat center top;}
+.quotation-icon{background: url(//imgs.communitymatrimony.com/cbsimages/home-quotation-icon.png) no-repeat top left; padding: 0 0 0 25px; width:290px; text-align:left;	}
+.ss-nav-on-l{background-position: 4px -895px; width:44px; height:30px; display:inline-block; cursor:pointer;}
+.ss-nav-on-r{background-position: -40px -895px; width:44px; height:30px; display:inline-block; cursor:pointer;}
+.ss-nav-off-l{background-position: 4px -858px; width:44px; height:30px; display:inline-block;}
+.ss-nav-off-r{background-position: -40px -860px; width:44px; height:30px; display:inline-block;}
+.home-trivia-bg{background: url(//imgs.communitymatrimony.com/cbsimages/home-trivia-bg.gif) repeat-x center; padding-bottom:6px; margin:25px; display:inline-block;}
+.home-assisted-bg{background: url(//imgs.communitymatrimony.com/cbsimages/home-assisted-img.jpg) no-repeat right center; padding: 30px 20px 30px;}
+.home-elite-bg{background: url(//imgs.communitymatrimony.com/cbsimages/home-elite-img.jpg) no-repeat left bottom; padding: 85px 20px 100px;}
+.home-mobile-bg{background: url(//imgs.communitymatrimony.com/cbsimages/home-mobile-img.jpg) no-repeat left center; padding: 50px 20px 44px;}
+.home-outlet-bg{background: url(//imgs.communitymatrimony.com/cbsimages/hp_new/home-retail-visit.jpg) no-repeat right center; padding:143px 20px 30px;}
+.home-tvc-bg-tamil-iyer, .home-tvc-bg-telugu-brahmin{background: url(//imgs.communitymatrimony.com/cbsimages/hp-tvc-img-tamil-iyer.png) no-repeat 90% 85%; padding:60px 0}
+.home-tvc-bg-tamil-mudaliyar{background: url(//imgs.communitymatrimony.com/cbsimages/hp-tvc-img-tamil-mudaliyar.png) no-repeat 90% 85%; padding:60px 0}
+.home-tvc-bg-tamil-vanniyar{background: url(//imgs.communitymatrimony.com/cbsimages/hp-tvc-img-tamil-vanniyar.png) no-repeat 90% 85%; padding:60px 0}
+.home-tvc-bg-telugu-aryavysya{background: url(//imgs.communitymatrimony.com/cbsimages/hp-tvc-img-telugu-aryavysya.png) no-repeat 90% 85%; padding:60px 0}
+.home-tvc-bg-telugu-kapu{background: url(//imgs.communitymatrimony.com/cbsimages/hp-tvc-img-telugu-kapu.png) no-repeat 90% 85%; padding:60px 0}
+.home-tvc-bg-malayalam-nair{background: url(//imgs.communitymatrimony.com/cbsimages/hp-tvc-img-malayalam-nair.png) no-repeat 90% 85%; padding:60px 0}
+.home-tvc-bg-malayalam-ezhava{background: url(//imgs.communitymatrimony.com/cbsimages/hp-tvc-img-malayalam-ezhava.png) no-repeat 90% 85%; padding:60px 0}
+.home-tvc-bg-malayalam-kcm{background: url(//imgs.communitymatrimony.com/cbsimages/hp-tvc-img-malayalam-kcm.png) no-repeat 90% 85%; padding:60px 0}
+.home-tvc-bg-hindi{background: url(//imgs.communitymatrimony.com/cbsimages/hp-tvc-img-hindi.png) no-repeat 90% 85%; padding:60px 0}
+.home-tvc-bg-hindi-kayastha{background: url(//imgs.communitymatrimony.com/cbsimages/hp-tvc-img-hindi-kayastha.png) no-repeat 90% 85%; padding:60px 0}
+.home-tvc-bg-hindi-agarwal{background: url(//imgs.communitymatrimony.com/cbsimages/hp-tvc-img-hindi-agarwal.png) no-repeat 90% 85%; padding:60px 0}
+.home-tvc-bg-hindi-muslim{background: url(//imgs.communitymatrimony.com/cbsimages/hp-tvc-img-hindi-muslim.png) no-repeat 90% 85%; padding:60px 0}
+
+.block{display:block; -webkit-animation: fadeIn 1s; animation: fadeIn 1s;}
+.none{display:none;}
+@-webkit-keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.line{border-bottom:1px solid #e1e1e1;}
+.errortxt{color: red; font: 11px Arial; width:210px;}
+.hp-reg {min-height:399px;}
+.lheight20{line-height:20px !important;} .lheight25{line-height:25px !important;}
+.clr7{color:#777;} 
+.browsetab-bdr{padding-left:10px; background-position: 0px -819px; background-repeat: repeat-x; height:31px;}
+.tab a.active{font:bold 14px arial; color:#535353 !important; text-decoration:none !important; display:inline-block; padding:7px 10px 7px 10px; border:solid 1px #E0E0E0; border-bottom:none; -moz-border-radius:5px; border-top-right-radius:5px; border-top-left-radius:5px; border-bottom-right-radius:0px; border-bottom-left-radius:0px; background:#f8f8f8;}
+.tab a.inactive{font:bold 14px arial; color:#535353 !important;  text-decoration:none !important; display:inline-block; padding:7px 11px 7px 11px;}
+
+
+
+/* Footer */
+.footer {background:#2e343a; box-shadow:0px 0px 5px #dddddd; border-top:solid 1px #abaeb0; border-bottom:solid 1px #7e8185; color:#ccccd5; font:normal 14px/16px arial; padding:15px 0px 0px 0px}/*13.6px*/
+.footer span.title { display:block; font:bold 15px/20px arial; color:#ffffff; padding:13px 0px 10px 0px;}
+.footbdr{ padding-bottom:15px; border-bottom:solid 2px #222930;}
+.abtus { float:left; width:504px; padding:0px 5px 0px 0px;}
+.abtus p { margin:0px; line-height:20px; text-align:left; width:444px;}
+.abtus p span{ color:#363636; }
+.quick-lnks a, .support-lnks a { display:block; text-decoration:none; line-height:24px; color:#ccccd5; }
+.quick-lnks { float:left; width:206px; }
+.support-lnks { float:left; width:206px; }
+.copyrights { color:#777777; display:block; font-size:14px; line-height:40px; padding:10px 0px 15px 0px;}
+.copyrights .fb { background:url(//imgs.communitymatrimony.com/cbsimages/subdomain/fb-icon.png) no-repeat center left; padding-left:45px; color:#777777;}
+/* Footer */
+
+.black_overlay {display:none; position:absolute; top:-1%; left:0%; width:100%; background-color:#222; z-index:1000; -moz-opacity: 0.7; opacity:0.7; filter:alpha(opacity=70);}
+.forgotpwddiv{position:fixed; top:30%;z-index:2000;}
+.quicktourdiv{position:absolute; top:10%;z-index:2000;}
+
+/*forgot password css*/
+
+.conainerdiv{width:480px;/*border: 3px solid #7F7F7F;*/background-color: #FFFFFF; font-size:12px;line-height:18px;}
+.close-pwd{color: #333333;}
+
+.forgot-txt{ font-size: 140%;color: #E34614; font-weight:bold; padding-bottom:10px;}
+.matriid-txt{font-size: 100%; color: #E34614;font-weight: bold;padding-bottom: 5px;padding-top: 5px;}
+.container-txt{color: #333333;font-size: 12px; padding-top: 5px;}
+.hdot{border-bottom:1px dotted #ccc;}
+.textfield { font-family: Arial, Verdana;  font-size: 11px;  border: 1px solid #bababa;  color: #797979;  height: 20px;
+padding: 2px 2px 2px 5px !important; padding-bottom:3px; background-color:#fff; line-height:20px; vertical-align:middle; text-align:left;}
+
+.containerbx{ font-size:14px;}
+/* New Popup Design */
+a.popup-close-off{display:block; height:30px; width:31px; background:url(//imgs.communitymatrimony.com/cbsimages/popup-close-off.png) no-repeat;}
+a.popup-close-off:hover{display:block; height:30px; width:31px; background:url(//imgs.communitymatrimony.com/cbsimages/popup-close-on.png) no-repeat;}
+.pop-up-sent{width:530px; margin:0px auto; position: relative; border-radius: 5px; /* padding: 5px; */ background: url("//imgs.communitymatrimony.com/cbsimages/popup-bdr-trans.png") repeat scroll 0px 0px transparent; border-radius:6px; -moz-border-radius:6px; -webkit-border-radius:6px; color:#363636;}
+
+.send-active-btn, .send-inactive-btn2 {background-color:#94d400; -moz-border-radius:5px; -webkit-border-radius:5px; border-radius:5px; border:1px solid #92c41f; display:inline-block; color:#FFF; font-family:arial; font-size:14px; font-weight:bold; padding:3px 8px !important; text-decoration:none; cursor:pointer;margin:0px; outline:none;}
+.send-inactive-btn2{background:#e8e8e8; border:1px solid #b9b9b9; color:#fff;}
+
+.terms_msg{width:380px;}
+.dis_no{display:none !important;}
+.reg_btn .reg{padding:9px 15px 7px 15px}
+
+
+/*new homepage Styles Start*/
+.cd-tabs {   background: #fff none repeat scroll 0 0;    border-radius: 5px;    margin: 2em auto;    max-width: 960px;    padding: 1em;    position: relative;    width: 100%; font-family: "latoregular" !important;}
+.cd-tabs:after {  content: "";  display: table;  clear: both;}
+.cd-tabs::after {
+  /* subtle gradient layer on top right - to indicate it's possible to scroll */
+  position: absolute;  top: 0;  right: 0;  height: 60px;  width: 50px;  z-index: 1;  pointer-events: none;  background: -webkit-linear-gradient( right , #f8f7ee, rgba(248, 247, 238, 0));  background: linear-gradient(to left, #f8f7ee, rgba(248, 247, 238, 0));  visibility: visible;  opacity: 1;  -webkit-transition: opacity .3s 0s, visibility 0s 0s;  -moz-transition: opacity .3s 0s, visibility 0s 0s;  transition: opacity .3s 0s, visibility 0s 0s;
+}
+.no-cssgradients .cd-tabs::after {  display: none;}
+.cd-tabs.is-ended::after {
+  /* class added in jQuery - remove the gradient layer when it's no longer possible to scroll */
+  visibility: hidden;  opacity: 0;  -webkit-transition: opacity .3s 0s, visibility 0s .3s;  -moz-transition: opacity .3s 0s, visibility 0s .3s;  transition: opacity .3s 0s, visibility 0s .3s;
+}
+.cd-tabs nav { position: relative; padding: 0 1em; top: 0; left: 0;  height: 100%; box-shadow: inset -2px 0 3px rgba(203, 196, 130, 0.06);    z-index: 1;  overflow: auto;  -webkit-overflow-scrolling: touch; }
+@media only screen and (min-width: 768px) { 
+	.cd-tabs::after {    display: none;  }
+	.cd-tabs nav {    position: relative;    top: 0;    left: 0;    height: 100%;    box-shadow: inset -2px 0 3px rgba(203, 196, 130, 0.06);    z-index: 1;
+  }
+}
+@media only screen and (min-width: 960px) {
+  .cd-tabs nav {    position: relative;    float: none;    background: transparent;    box-shadow: none;  }
+}
+
+.cd-tabs-navigation {  width: auto;}
+.cd-tabs-navigation:after {  content: "";  display: table;  clear: both;}
+.cd-tabs-navigation li {  float: left; width: 50%;}
+.cd-tabs-navigation a {  position: relative;  display: block;  height: 35px;  width: auto;  text-align: center;  font-size: 12px;  -webkit-font-smoothing: antialiased;  -moz-osx-font-smoothing: grayscale;  font-size: 1em;  color: #c3c2b9;  padding-top: 15px;   color: #b9b9b9;    text-transform: uppercase;}
+.no-touch .cd-tabs-navigation a:hover { color: #29324e;  background-color: rgba(233, 230, 202, 0.3);}
+.cd-tabs-navigation a.selected {  background-color: #ffffff !important;  box-shadow: inset 0 -2px 0 #f05451;  color: #dd3e20;    text-transform: uppercase; font-size: 1em;    font-weight: normal;    border-radius: 5px 5px 0 0;}
+
+@media only screen and (min-width: 768px) {
+	  .cd-tabs{padding:1em 0;  margin: 2.0em auto;}
+	  .cd-tabs-navigation {    width: auto;}
+	  
+ .cd-tabs-navigation {
+    /* tabbed on top on big devices */
+    width: 100%;   background-color: #ffffff;   box-shadow: inset 0 -2px 3px rgba(203, 196, 130, 0.06);
+  }
+  .cd-tabs-navigation a {height: 36px;  line-height: 20px;  width: auto;  text-align: center;  font-size: 14px; font-size: 0.875rem; padding: 0;}
+  .cd-tabs-navigation a.selected { box-shadow: inset 0 -2px 0 #dd3e20 ;}
+}
+@media only screen and (min-width: 960px) {
+  .cd-tabs-navigation {
+    /* tabbed on top on big devices */
+    width: 100%;    background-color: #ffffff;    box-shadow: inset 0 -2px 3px rgba(203, 196, 130, 0.06);  }
+  .cd-tabs-navigation a {    height: 36px;    line-height: 20px;    width: auto;    text-align: center;    font-size: 14px;    font-size: 0.875rem;    padding: 0;  }
+  .cd-tabs-navigation a.selected {    box-shadow: inset 0 -2px 0 #dd3e20 ;  }
+}
+
+.cd-tabs-content {  background: #ffffff;}
+.cd-tabs-content li {  display: none;  padding: 0 1.4em;}
+.cd-tabs-content li.selected {  display: block;  -webkit-animation: cd-fade-in 0.5s;  -moz-animation: cd-fade-in 0.5s;  animation: cd-fade-in 0.5s;}
+.cd-tabs-content li p {  font-size: 14px;  font-size: 0.875rem;  line-height: 1.6;  color: #8493bf;  margin-bottom: 2em;}
+@media only screen and (min-width: 768px) {
+  .cd-tabs-content {    min-height: 480px;  }
+  .cd-tabs-content li {    padding: /*2em 2em 2em 7em*/0;  }
+}
+@media only screen and (min-width: 960px) {
+  .cd-tabs-content {    min-height: 0;  }
+  .cd-tabs-content li {    padding: 0;  }
+  .cd-tabs-content li p {    font-size: 16px;    font-size: 1rem;  }
+}
+
+@-webkit-keyframes cd-fade-in {
+  0% {    opacity: 0;  }
+  100% {    opacity: 1;  }
+}
+@-moz-keyframes cd-fade-in {
+  0% {    opacity: 0;  }
+  100% {    opacity: 1;  }
+}
+@keyframes cd-fade-in {
+  0% {    opacity: 0;  }
+  100% {    opacity: 1;  }
+}
+@media screen and (max-width: 37em) {
+.cd-tabs-content .app-promo ul li {font-size: 16px !important; margin: 0 !important; width: 12% !important;}
+.cd-tabs-content .app-promo ul { padding: 10px 0 0;}
+#home-register .cd-tabs .form-cnt h2 {font-size: 17px !important;}
+.app-promo h2 .black-clr { color: #000000; font-size: 20px;}
+#hpserch dd {width: 100%;}
+#hpserch select, #hpsrc select{width: 100% !important;}
+#hpreg select, #hpsrc select{width: 100% !important;}
+#hpreg .textfield, #hpsrc .textfield{width: 100% !important;}
+.cd-tabs {margin: 2.4em auto;padding: 0;}
+.position_btm { width: 300px !important;}
+.txtcnt-leftpanel { bottom: 0 !important; float: left; position: absolute; width: auto;}
+.big-cnt {font-size: 25px !important;}
+.small-cnt {font-size: 15px !important;}
+.cd-tabs-navigation a {height: 35px;padding-top: 15px;}
+.cd-tabs-content li {padding: 0 1.4em;}
+.cd-tabs #hpserch select.wdth50{width: 50px !important;}
+}
+#home-register .cd-tabs .reg-title{display:none;}
+#home-register .cd-tabs #homeregisterform {    box-shadow: none;}
+#home-register .cd-tabs .hp-reg{ background:  none !important;}
+#home-register .cd-tabs  #hpreg {    background:  none !important;}
+
+#home-register .cd-tabs #hpreg select, #home-register #hpsrc select {    border: 1px solid #e0e0e0 !important;}
+#home-register .cd-tabs #hpreg .textfield, #home-register #hpsrc .textfield {    border: 1px solid #e0e0e0!important;}
+#home-register .cd-tabs  #hpreg label {color: #363636;}
+/****************** find match search form ****************/
+#home-search{display:block;overflow:hidden;font-family:Arial, Helvetica, sans-serif;}
+#home-search .form-cnt{width:465px;padding:50px 0px 5px;float:right}
+#home-search .form-cnt h2{font-size:20px;color:#fff;padding:50px 0px 5px;line-height:35px;}
+
+#home-search .hp-reg, #home-search #hpserch{ }
+#home-search #membership1{margin-right:0;}
+#home-search .reg-title{font-size:25px ;font-weight:bold ;color:#d21d1d !important;font-family:Arial !important;border:0;box-shadow:none; background: rgba(211, 210, 211, .60);padding:10px 15px 0px}
+#home-search .reg-title span{color:#d21d1d !important;}
+#home-search #hpserch{border:0;box-shadow:none;color:#000;font-size:14px; font-family: 'latoregular' !important;font-weight:normal}
+#home-search #hpserch label{color:#363636;font-size:14px;font-family: 'latoregular' !important;font-weight:normal}
+#home-search #hpserch select, #home-search #hpsrc select{border:1px solid #e0e0e0 }
+#home-search #hpserch .textfield, #home-search #hpsrc .textfield{border:1px solid #e0e0e0 }
+#home-search .reg_tc_btn{display:block;overflow:hidden;margin:5px 9px 0 0;}
+#home-search .reg_tc_btn .lft_cnt{float:left;width:255px;padding:8px 0px;}
+#home-search .reg_tc_btn .rgt_cnt{float:right;}
+#home-search  .tc-check{width:15px;margin:0 3px 0 0}
+#home-search .clr9{color:#555 !important;font-family:Arial, Helvetica, sans-serif}
+#home-search .big-btn{margin:0 ;background:url(//imgs.communitymatrimony.com/cbsimages/hp_new/home-regbtn-arowico.png) #b61b1b  no-repeat 93.5% 15px  !important;font-size:16px !important;font-family:"Lato",sans-serif;font-weight:700 !important}
+#home-search #hpserch dl{padding:8px 0 }
+#home-search .terms_msg{width:225px;line-height:16px;}
+#home-search .reg_btn{padding:0px !important}
+#home-search .reg_btn .reg{padding:9px 22px 8px 10px !important;}
+#home-search .bod0{border:none !important}
+#home-search .dis0{display:none !important}
+#home-search  .dis_no{display:block !important}
+#hpserch dd{float:left; font: normal 12px arial, verdana; margin:0px;}
+#hpserch {background: #fff; -moz-box-shadow: 0 2px 4px #d0d0d0; -webkit-box-shadow: 0 2px 4px #d0d0d0; box-shadow: 0 2px 4px #d0d0d0; margin: 0 0; border-radius:8px; border-top-left-radius: 0px !important; border-top-right-radius: 0px !important; min-height:100px;}
+#membership1{margin-right:10px;}
+#hpserch .pad{padding: 10px 10px 15px 20px;}
+#hpserch dl{clear:both; padding: 6px 0 6px; margin:0px;font: normal 11px arial, verdana; display:block; height:23px;color:#000;  height: 25px;  }
+#hpsrc dl{padding: 4px 0 4px !important;}
+#hpserch dt{width: 135px; float:left; padding-top:3px;text-align:left;padding-right:11px; color:#363636; font: bold 13px arial, verdana;}
+#hpserch dd{margin-bottom: 1px !important;float:left; font: normal 11px arial, verdana; margin:0px; color:#797979;}
+#hpserch select, #hpsrc select{ background: none repeat scroll 0 0 #FFF; border: 1px solid #eaeaea; color: #797979; font-family: Arial,Helvetica,Sans-Serif;  font-size: 12px;  margin: 0; width: 270px; padding: 3px 2px 2px 2px; height:25px;vertical-align:top;}
+#hpsrc select{height:32px !important; font-size:13px; padding: 2px 2px 2px 8px;}
+.cd-tabs  .home_searchform input[type="radio"] {    display: inline !important;}
+.part_search > h2 {    color: #000 !important;}
+.part_cont > li {    display: block;}
+.cd-tabs-content .app-promo {    padding: 0 ;   background: #fbfbfb  none repeat scroll 0 0;    margin: 0 0;}
+.cd-tabs .home_searchform .regsrchbtn .search-btn {    background: #de3e1e !important;    border-radius: 3px;    color: #fff !important;    margin: 0;    position: absolute;    right: 9px;    width: auto !important;  padding: 0 15px !important;   font-family: "Lato",sans-serif;    font-size: 16px !important;    font-weight: 700 !important;}
+
+section.module.common-regformbg {        padding-bottom: 25px;}
+.regsrchbtn {    position: relative;    right: 0 !important;    width: 100%;}
+.br-vertical {    border: 1px solid #e9e9e9;    margin: 0 auto;    width: 90%;}
+.cd-tabs-content .app-promo ul {    padding: 25px 0 30px;}
+
+.cd-tabs-content  .app-promo ul li .txt-cnt {    font-size: 13px;    line-height: 13px;    padding: 10px 0 0;}
+.cd-tabs-content .app-promo ul li .million-prof {    background: #64b5f6 url("//imgs.communitymatrimony.com/cbsimages/hp_new/home-spriteicon-01.png") no-repeat scroll 8px 11px / 33px auto ;}
+.cd-tabs-content .app-promo ul li .notify {    background: #81c784 url("//imgs.communitymatrimony.com/cbsimages/hp_new/home-spriteicon-01.png") no-repeat scroll 7px -27px / 35px auto;}
+.cd-tabs-content .app-promo ul li .search {    background: #cb79e6 url("//imgs.communitymatrimony.com/cbsimages/hp_new/home-spriteicon-01.png") no-repeat scroll 7px -133px / 36px auto;}
+
+.cd-tabs-content .app-promo ul li {    float: left;    font-size: 18px;    margin: 0 2.5%;    width: 28%;}
+.cd-tabs-content .app-promo ul li .img-cnt {    border-radius: 50%;    display: block;    height: 45px;    margin: 0 auto;    width: 45px;}
+#home-register .form-cnt h2 {    font-size: 20px !important;    padding: 17px 0 5px !important;  line-height: 22px !important;}
+.cd-tabs-content .app-promo ul {    display: block;    margin: 0 auto;    overflow: hidden;    width: 85%;}
+.cd-tabs-navigation a:focus{outline:0 !important;}
+.app-promo h2 .black-clr {    color: #000000;font-size: 24px;}
+.padd_to {    color: #333;    line-height: 24px;    padding: 0 14px;}
+.clearfix:after {     visibility: hidden;     display: block;     font-size: 0;     content: " ";     clear: both;     height: 0;     }
+.clearfix { display: inline-block; }
+/* start commented backslash hack \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/* close commented backslash hack */
+.home-wrapper.clearfix { position: relative;}
+.txtcnt-leftpanel {bottom: 18%;  float: left; position: absolute; width: 450px;}
+.position_btm {bottom: 12px;  color: #fff;  position: absolute;  text-align: center; width: 450px;}
+.big-cnt {font-size: 37px; font-weight: bold;}
+.small-cnt { font-size: 18px; font-weight: normal;padding-top: 6px;}
+ #home-register .cd-tabs .big-btn {background: #dd3e20 url("//imgs.communitymatrimony.com/cbsimages/hp_new/home-regbtn-arowico.png") no-repeat scroll 93.5% center !important;height: 47px;}
+.shadwo_bg {background:url("//imgs.communitymatrimony.com/cbsimages/hp_new/bg_shadwo.png") repeat-x scroll center bottom !important;}
+.home-wrapper.clearfix {position: relative;  z-index: 99;}
+#home-register {display: block; font-family: Arial,Helvetica,sans-serif;  overflow: hidden;}
+.paddbtm-none.module.common-regformbg {padding: 0;}
+.search-err.tab_search {left: inherit;position: absolute;top: 121px;width: 100%;}
+.search-err.tab_search .mediumhdrtxt-s.clr4 { color: red;}
+/*new homepage Styles End*/

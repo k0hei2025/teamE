@@ -1,0 +1,576 @@
+var mobilearray		= {98:10,222:10,39:10,220:9,13:9,189:8,129:9,221:8,173:8,114:8};
+var phonearray		= {98:8,222:8,39:8,220:7,13:8,189:8,129:6,221:6};
+
+function genNumbers() {
+  var d=new Date();
+  var rand_flag = "sr"+d.getSeconds()+"we";
+  return rand_flag;
+}
+/*position find*/
+function fillSelectFromArray(selectCtrl, itemArray, goodPrompt, badPrompt, defaultItem)
+{
+	var i;var optn = new Array();
+	if (itemArray != null) {
+		for (i = 0; i < itemArray.length; i++) {
+			optn = itemArray.split("|");
+			selectCtrl.options[i].text  = optn[0];
+			selectCtrl.options[i].value = optn[1]; 
+		}
+		//selectCtrl.options[0].selected = true;
+   }
+}//fillSelectFromArray
+
+function IsEmpty(obj, obj_type)
+{
+	if (obj_type == "text" || obj_type == "password" || obj_type == "textarea" || obj_type == "file")	{
+		var objValue;
+		objValue = obj.value.replace(/\s+$/,"");
+		if (objValue.length == 0) {
+			return true;
+		} else {
+			return false;
+		}
+	} else if (obj_type == "select" || obj_type == "select-one") {
+		for (i=0; i < obj.length; i++) {
+			if (obj.options[i].selected) 
+				{
+					if(obj.options[i].value==" ") 
+					{return true;obj.focus();} else {return false;}
+					
+					if(obj.options[i].value == "0") 
+					{
+						if(obj.options[i].seletedIndex == "0") 
+						{return true;obj.focus();}
+					} else {return false;}
+				}
+			
+		}
+		return true;	
+	} else if (obj_type == "radio" || obj_type == "checkbox") {
+		if (!obj[0] && obj) {
+			if (obj.checked) {
+				return false;
+			} else {
+				return true;	
+			}
+		} else {
+			for (i=0; i < obj.length; i++) {
+				if (obj[i].checked) {
+					return false;
+				}
+			}
+			return true;
+		}
+	} else {
+		return false;
+	}
+}
+
+function CompareValue( NumStr, pattern )
+{
+	for( var Idx = 0; Idx < NumStr.length; Idx ++ )
+	{
+		 var Char = NumStr.charAt( Idx );
+		 var Match = false;
+
+		for( var Idx1 = 0; Idx1 < pattern.length; Idx1 ++)
+		{
+		 if( Char == pattern.charAt( Idx1 ) )
+		 Match = true;
+		}
+		if ( !Match )
+		return false;
+ 	}
+   	return true;
+}
+
+function ValidateEmail(Email)
+{
+	var funRegExp	      = new RegExp("^[A-Za-z0-9][A-Za-z0-9_\\.\-]*\\@[a-zA-Z0-9]+\\.[a-zA-Z]+[\\.]?[a-zA-Z]*$");
+	if (!Email.match(funRegExp)) { return false; }//if
+	return true;
+}
+
+function ChkEmpty(obj,obj_type,spanname,msg)
+{
+	var msgt	= obj + obj_type + spanname + msg;
+//alert(msgt);
+
+	if (obj_type=="text" || obj_type=="password" || obj_type=="textarea" || obj_type=="file")
+	{
+		var objValue;
+		objValue = obj.value.replace(/\s+$/,"");
+		if (objValue.length == 0)
+		{document.getElementById(spanname).innerHTML=msg;return true;} 
+		else {document.getElementById(spanname).innerHTML=" ";return false;}
+	} 
+	
+	if (obj_type == "select") 
+	{
+		if (obj.selectedIndex==0)
+		{document.getElementById(spanname).innerHTML=msg;return true;} 
+		else {document.getElementById(spanname).innerHTML="";return false;}
+		return true;	
+	} 
+	
+	if (obj_type == "radio" || obj_type == "checkbox") 
+	{
+		var objlength=obj.length
+		var objcount=0;
+		for (i=0;i<objlength;i++ )
+		{
+			if(obj[i].checked){objcount=1;break;}else{objcount=0;}
+		}
+		if(objcount==0)
+		{document.getElementById(spanname).innerHTML=msg;}
+		else{document.getElementById(spanname).innerHTML=" ";}
+		
+		return true;
+	} 
+	
+		return false;
+}
+
+function ValidateNo( NumStr, String )
+{
+	for( var Idx = 0; Idx < NumStr.length; Idx ++ )
+	{
+		 var Char = NumStr.charAt( Idx );
+		 var Match = false;
+
+		for( var Idx1 = 0; Idx1 < String.length; Idx1 ++)
+		{
+		 if( Char == String.charAt( Idx1 ) )
+		 Match = true;
+		}
+
+		if ( !Match )
+		return false;
+ 	}
+   	return true;
+}
+
+function replaceAlpha(strIn) {
+	var strOut='';
+	for(var i=0 ; i < strIn.length ; i++) {
+		var cChar=strIn.charAt(i);
+		if((cChar >= 'A' && cChar <= 'Z') || (cChar >= 'a' && cChar <= 'z') || (cChar >= '0' && cChar <= '9')) {
+			strOut += cChar;
+		} else {
+			strOut += "_";
+		}
+	} return strOut;
+}
+
+function SplNameChar(txt){
+	if(txt.length == 0)
+		return false;
+	for(var i = 0;i < txt.length;i++){
+		if(txt.charAt(i) == '@' || txt.charAt(i) == '#' 
+			|| txt.charAt(i) == '!' || txt.charAt(i) == '$' 
+			|| txt.charAt(i) == '%' || txt.charAt(i) == '&' 
+			|| txt.charAt(i) == '^' || txt.charAt(i) == '*'  
+			|| txt.charAt(i) == '-' || txt.charAt(i) == '=' 
+			|| txt.charAt(i) == '+' || txt.charAt(i) == '|' 
+			|| txt.charAt(i) == '?' || txt.charAt(i) == '<' 
+			|| txt.charAt(i) == '>' || txt.charAt(i) == '/' 
+			|| txt.charAt(i) == '[' || txt.charAt(i) == ']' 
+			|| txt.charAt(i) == '(' || txt.charAt(i) == ')' 
+			|| txt.charAt(i) == '`' || txt.charAt(i) == "," 
+			|| txt.charAt(i) == ":" || txt.charAt(i) == ";" 
+			|| txt.charAt(i) == "{" 
+			|| txt.charAt(i) == "}" || txt.charAt(i) == '"'
+			|| txt.charAt(i) == '\\'|| txt.charAt(i) == "'" )
+			return true;
+	}
+	return false;
+}//SplNameChar
+
+function nullchk(txt)
+{
+	if (txt == "" || txt == null)
+	{ return true; }
+		
+	var i;
+	for(i=0;i<txt.length;i++)
+	{
+		if (txt.charAt(i) != " ")
+		return false
+	}
+	return true;
+}//nullchk
+
+function HasSpace(txt){		
+	if(txt.length == 0)
+		return false;
+	for(var i = 0;i < txt.length;i++){
+		if(txt.charAt(i) == " ")
+			return true;
+	}
+	return false;
+}//HasSpace
+
+function getSelectedRadio(buttonGroup) {
+   // returns the array number of the selected radio button or -1 if no button is selected
+   if (buttonGroup[0]) { // if the button group is an array (one button is not an array)
+      for (var i=0; i<buttonGroup.length; i++) {
+         if (buttonGroup[i].checked) {
+            return i
+         }
+      }
+   } else {
+      if (buttonGroup.checked) { return 0; } // if the one button is checked, return zero
+   }
+   // if we get to this point, no radio button is selected
+   return -1;
+} // Ends the "getSelectedRadio" function
+
+function getSelectedRadioValue(buttonGroup) {
+   // returns the value of the selected radio button or "" if no button is selected
+   var i = getSelectedRadio(buttonGroup);
+   if (i == -1) {
+      return "";
+   } else {
+      if (buttonGroup[i]) { // Make sure the button group is an array (not just one button)
+         return buttonGroup[i].value;
+      } else { // The button group is just the one button, and it is checked
+         return buttonGroup.value;
+      }
+   }
+} // Ends the "getSelectedRadioValue" function
+
+// function to check a specific element in specific array ,Returns false if it is not//
+function checkValueInArray(arr,val) {
+  var i;
+  for (i=0; i < arr.length; i++) {
+	if (arr[i] == val) {
+	 return true;
+	}
+  }
+  return false;
+}
+
+// function which allows user to enter only numbers and backspace key
+function allowNumeric(e) {
+   var charCode = (e.which) ? e.which : e.keyCode;
+      if(((charCode >= 48) && (charCode <= 57)) || (charCode == 8) || (charCode == 9) ) {
+          return true;
+	  }
+	  return false;
+}
+
+function phonecountChk(val,country,totlen,codearray) {
+	if(!codearray[country])	{
+		if(val.length>=totlen) {
+			return true;
+		}
+	} else {
+		if(val.length>=codearray[country]){
+			return true;
+		}
+	}
+	return false;
+}
+
+
+
+
+
+function forgotPasswordValidate()
+{
+	
+	var a=document.getElementById('forgotpwd').value;
+	if (a=='')
+	{	
+		document.getElementById("error").innerHTML="Please enter the Matrimony ID / E-mail";
+		return false;
+	}
+}
+
+function quicktour()
+{
+	var SendUrl	= "/site/quick-tour.html";
+	objLangCall = AjaxCall();
+	objLangCall.open('GET',SendUrl, true);
+	objLangCall.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	objLangCall.onreadystatechange=function()
+	{
+		if (objLangCall.readyState==4 && objLangCall.status==200)
+		{
+			document.getElementById('quicktourdiv').innerHTML	=objLangCall.responseText;
+			window.setTimeout(function() {$('.left-stip,.right-stip', '#quicktourdiv #top_block1').css('border', '0px solid red');}, 1);
+			changemodel();
+		}
+	}
+	objLangCall.setRequestHeader("Connection", "close");
+	objLangCall.send();
+}
+function changemodel()
+{
+	for(var icount=1;icount<=5;icount++){
+		if($('div.hp-top-bg-model'+icount).length>0)
+		{
+			$('#welcomemodel').removeClass('welcomemodel1').addClass('welcomemodel'+icount);
+		}
+	}
+}
+
+function litebox(id,w){
+			objId(id).style.display = "block";
+			var lft = document.body.clientWidth/2 - w/2;
+			objId(id).style.left = lft+"px";
+			objId('fade').style.display = "block";
+			objId('fade').style.height = document.body.scrollHeight+'px';
+			 var val=parseInt(document.body.offsetWidth)-4;
+			objId('fade').style.width=val+'px';
+			window.scrollTo(0,0);
+		}
+
+		function closelitebox(id){
+			objId(id).style.display = "none";
+			objId('fade').style.display = "none";
+		}
+
+		function objId(obj){
+			if(document.getElementById){
+				if(document.getElementById(obj)!=null){return document.getElementById(obj)}else{return "";}
+			}else if(document.all){
+				if(document.all[obj]!=null){return document.all[obj]}else{return "";}
+			}
+		}
+	
+
+
+	
+	function chkgender(g)
+	{ 
+
+		if (g=="f") { document.RSearchForm.ageFrom.value="18"; document.RSearchForm.ageTo.value="30"; }
+		if (g=="m") { document.RSearchForm.ageFrom.value="21"; document.RSearchForm.ageTo.value="33"; }
+	}
+
+
+	 $(document).ready(function() {
+		 $('.nav-arrow-next img').live('click', function() {
+		 var liId = $(this).attr('id');
+		for(j=1;j<6;j++)
+		 {
+		 $('#top_block'+j).hide();
+		 }
+		for(j=1;j<5;j++)
+		{
+		if(liId=='next'+j)
+		 {
+			jval=j;
+			jval++;
+			$('#top_block'+jval).show();
+			window.setTimeout(function() {
+				$('.left-stip,.right-stip', '#top_block'+jval).css('border', '0px solid red');
+			}, 1);
+		 }
+		}
+  		   return false;
+         });
+$('.nav-arrow-pre img').live('click', function() {
+		 var liId = $(this).attr('id');
+		for(j=1;j<6;j++)
+		 {
+		 $('#top_block'+j).hide();
+		 }
+		for(j=2;j<6;j++)
+		{
+		if(liId == 'previous'+j)
+		 {
+			jval=j;
+			jval--;
+			$('#top_block'+jval).show();
+		 }
+		}
+  		   return false;
+         });
+		 
+		 });
+
+	$('.closetour').live('click', function () 
+	{
+	$('#fade').hide();
+	$('#quicktourdiv').hide();
+	for(j=1;j<6;j++)
+		 {
+		 $('#top_block'+j).hide();
+		 }
+	});
+	
+$(document).ready(function(e) {
+	$('.register-tab').click(function(){
+		
+		$(this).removeClass('tabinactive').addClass('tabactive');
+		$('.search-tab').removeClass('tabactive').addClass('tabinactive');			
+		$('.hp-reg').removeClass('none').addClass('block'); 
+		$('#hpsrc').removeClass('block').addClass('none');	
+		
+	});
+	
+	$('.search-tab').click(function(){
+		
+		$(this).removeClass('tabinactive').addClass('tabactive');
+		$('.register-tab').removeClass('tabactive').addClass('tabinactive');
+					
+		$('#hpsrc').removeClass('none').addClass('block'); 
+		$('.hp-reg').removeClass('block').addClass('none');	
+		
+	});
+	
+	$("div.member").hover(function()
+	{
+		$(this).find(".memberhover").fadeIn();
+	},
+	function()
+	{
+		$(this).find(".memberhover").hide();
+	});
+});
+
+
+$(document).ready(function(){
+
+function loadknowyourcommunity(){
+
+	var knowyourcommunity = {"3":[{
+		"domain":"Agarwal",
+		"img":"//imgs.agarwalmatrimony.com/cbsimages/trivia/trivia-agarwal-img2.jpg",
+		"part1head":"The Pride of Agarwals:",
+		"part1":"Lakshmi Niwas Mittal, Indian steel magnate. He is the chairman and CEO of ArcelorMittal, the world's leading steel and mining company.",
+		"part2head":"The Pride of Agarwals:",
+		"part2":"Anil Agarwal, Indian businessman, the founder of Vedanta Resources Corporation, the largest mining and non-ferrous metals company in India...",
+		"part3head":"Did you know?",
+		"part3":"Several large business organizations including Bharti Airtel, ArcelorMittal, and The Times Group were founded by members of the Agarwal community..."
+	}],
+	"25":[{
+		"domain":"Brahmin",
+		"img":"//imgs.brahminmatrimony.com/cbsimages/trivia/trivia-brahmin-img7.jpg",
+		"part1head":"The Pride of Brahmins:",
+		"part1":"Narayana Murthy, the co-founder of Infosys, was called the Father of Indian IT sector by Time magazine for his contribution to outsourcing in India.",
+		"part2head":"The Pride of Brahmins:",
+		"part2":"Viswanathan Anand became India's first Grandmaster in 1988 and is a five-time World Chess Champion ...",
+		"part3head":"Did you know?",
+		"part3":"Brahmins are broadly divided into two regional groups: Pancha-Gauda Brahmins from the Northern part of India (north of the Vindhya Mountains) and Pancha-Dravida Brahmins ..."
+	}],
+	"2500":[{
+		"domain":"Christian",
+		"img":"//imgs.christianmatrimony.com/cbsimages/trivia/trivia-christian-img1.jpg",
+		"part1head":"The Pride of Christians:",
+		"part1":"The five-time World Boxing Champion Mary Kom is a Christian. She is the only Indian woman boxer to have qualified for the 2012 Summer Olympics.",
+		"part2head":"The Pride of Christians:",
+		"part2":"Sir Cliff Richard, the rock artist, Ben Kingsley, the actor and George Orwell, the author, are Anglo Indians who were educated in ... ",
+		"part3head":"Did you know?",
+		"part3":"The world's oldest existing church believed to be built by Thomas the Apostle in 57 AD is called Thiruvithamcode Arappally or Thomaiyar Kovil and is ..."
+	}],
+	"49":[{
+		"domain":"Ezhava",
+		"img":"//imgs.ezhavamatrimony.com/cbsimages/trivia/trivia-ezhava-img1.jpg",
+		"part1head":"The Pride of Ezhavas:",
+		"part1":"V. S. Achuthanandan, former Chief Minister of Kerala is from the Ezhava community. He is one of the founding leaders of the CPI - M (Communist Party of India - Marxist).",
+		"part2head":"The Pride of Ezhavas:",
+		"part2":"Narayana Guru also known as Sree Narayana Guru Swami, the saint, sadhu and a social reformer. He led a reform movement ... ",
+		"part3head":"Did you know?",
+		"part3":"As well as being agricultural labourers, cultivators, toddy tappers, and businessmen, it must be mentioned that Ezhavas are also practicing ..."
+	}],
+	"27":[{
+		"domain":"Iyengar",
+		"img":"//imgs.iyengarmatrimony.com/cbsimages/trivia/trivia-iyengar-img1.jpg",
+		"part1head":"The Pride of Iyengars:",
+		"part1":"Rajaji (Chakravarti Rajagopalachari) the first Indian Governor General of Independent India, Independence activist, politician and writer was an Iyengar.",
+		"part2head":"The Pride of Iyengars:",
+		"part2":"Vasundhara Das, the Indian singer, actress, composer, entrepreneur, speaker, songwriter and environmental activist belongs to ... ",
+		"part3head":"Did you know?",
+		"part3":"Iyengars are distinguished for their knowledge of the Vedas and the Divya ..."
+	}],
+	"28":[{
+		"domain":"Iyer",
+		"img":"//imgs.iyermatrimony.com/cbsimages/trivia/trivia-iyer-img1.jpg",
+		"part1head":"The Pride of Iyers:",
+		"part1":"R.K. Narayan, the famous Indian writer best known for Malgudi Days belonged to the Iyer community. He received the Padma Vibhushan.",
+		"part2head":"The Pride of Iyers:",
+		"part2":"Famous Iyer singers include Usha Uthup, Shankar Mahadevan, Mahalaxmi Iyer, Hamsika Iyer and ... ",
+		"part3head":"Did you know?",
+		"part3":"In ancient times, Iyers mostly lived in exclusive Brahmin quarters of their village known as an Agraharam. Some still exist in ..."
+	}],
+	"74":[{
+		"domain":"Kamma",
+		"img":"//imgs.kammamatrimony.com/cbsimages/trivia/trivia-kamma-img1.jpg",
+		"part1head":"The Pride of Kammas:",
+		"part1":"Dasari Jai Ramesh is the Chairman of Vijai Electricals. The firm was recognized by Government of India as a \"Trading House\" in 1997.",
+		"part2head":"The Pride of Kammas:",
+		"part2":"Raja Venkatadri Naidu Vasireddy, the last king of the Vasireddy Clan that ruled parts of coastal Andhra Pradesh is ... ",
+		"part3head":"Did you know?",
+		"part3":"The Kammas of Southern Tamil Nadu have excelled in the cultivation of black cotton soils and later diversified into various ..."
+	}]
+	};
+
+	var communityId = $('#communityId').val();
+
+	if($.isArray(knowyourcommunity[communityId])){
+		$('#knowyourcommunity').show();
+		$.each(knowyourcommunity[communityId], function (i, ob) {
+
+		$('#kycdomain').html(ob.domain);
+			$('#kycimage').attr("src",ob.img);
+			$('#kycpart1').html('<div class="font13 boldtxt">'+ob.part1head+'</div> <span class="clr7">'+ob.part1+'</span>');
+			$('#kycpart2').html('<span class="boldtxt font13">'+ob.part2head+' </span><span class="clr7">'+ob.part2+'</span> <a class="clr6" href="/articles/trivia.php">More</a></span>');
+			$('#kycpart3').html('<span class="boldtxt font13">'+ob.part3head+'</span> <span class="clr7">'+ob.part3+'</span> <a class="clr6" href="/articles/trivia.php">More</a>');
+			//$('#kycreadmore').html(ob.domain+' Trivia');
+
+	  });
+	}else{
+		if($('#knowyourcommunity').length>0 ) { $('#knowyourcommunity').hide();} 
+	}
+
+}
+loadknowyourcommunity();
+
+});
+function forgotPassword(url) 
+{ 
+	var SendUrl	= "/site/forgotpassword.html";
+	objLangCall = AjaxCall();
+	objLangCall.open('GET',SendUrl, true);
+	objLangCall.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	objLangCall.onreadystatechange=function()
+	{
+		if (objLangCall.readyState==4 && objLangCall.status==200)
+		{
+			document.getElementById('forgotpwddiv').innerHTML	=objLangCall.responseText;
+			
+			$("#formSubmit").click(function() {
+				var fgpwd_name=$("#forgotpwd").val();
+				var params = 'fp_idEmail='+fgpwd_name;
+				var URL = url+"/login/forgotpassword.php";
+				if(fgpwd_name!=''){
+					ajaxpopup_fpwd(params,URL);
+				}
+				else
+				{
+					$('#fperror').html("Please enter your E-mail / Mobile Number / Matrimony ID");
+				}	
+			});
+		}
+	}
+	objLangCall.setRequestHeader("Connection", "close");
+	objLangCall.send();
+}
+	
+function ajaxpopup_fpwd(params,url){
+	 objLangCall = AjaxCall();
+	 objLangCall.open('GET',url+"?"+params, true);
+	 objLangCall.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	 objLangCall.onreadystatechange=function()
+	 {
+		if (objLangCall.readyState==4 && objLangCall.status==200)
+		{ 
+			$('#innerdisp').html(objLangCall.responseText);
+		}
+	 }
+	 objLangCall.setRequestHeader("Connection", "close");
+	 objLangCall.send();
+}

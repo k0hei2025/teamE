@@ -1,0 +1,23 @@
+
+function searchformvalidate() {
+	var quicksearchform = this.document.RSearchForm;
+	/*if ((IsEmpty(quicksearchform.ageFrom,'text'))||(IsEmpty(quicksearchform.ageTo,'text'))) { alert("Please enter the age range for your partner.");quicksearchform.ageFrom.focus(); return false; }*/
+
+	if ((IsEmpty(quicksearchform.ageFrom,'text'))) { alert("Please enter the age range for your partner.");quicksearchform.ageFrom.focus(); return false; }
+	if ((IsEmpty(quicksearchform.ageTo,'text'))) { alert("Please enter the age range for your partner.");quicksearchform.ageTo.focus(); return false; }
+
+
+	if (quicksearchform.gender[0].checked==true){
+		if (quicksearchform.ageFrom.value<18) {alert("The minimum age limit should not be less than 18 years.");return false;}		
+		if (quicksearchform.ageTo.value<18) {alert("The minimum age limit should not be less than 18 years.");return false;}		
+	}
+	if (quicksearchform.gender[1].checked==true){
+		if (quicksearchform.ageFrom.value<21) {alert("The minimum age limit should not be less than 21 years.");return false;}
+		if (quicksearchform.ageTo.value<21) {alert("The minimum age limit should not be less than 21 years.");return false;}
+	}
+	if ((parseInt(quicksearchform.ageTo.value)-parseInt(quicksearchform.ageFrom.value))>22)	{ alert("Age range should not exceed 20 years.");quicksearchform.ageTo.focus();return false; }
+	if ((quicksearchform.ageFrom.value>70)||(quicksearchform.ageTo.value>70))	{ alert("The maximum age limit should not be more than 70 years.");return false; }
+	if ((quicksearchform.ageFrom.value>quicksearchform.ageTo.value))	{ alert("Please enter a valid age range for your partner.");return false; }
+	if ((quicksearchform.ageFrom.value==""||quicksearchform.ageFrom.value==null)||(quicksearchform.ageTo.value==""||quicksearchform.ageTo.value==null))	{ alert("The maximum age limit should not be more than 70 years.");return false; }	
+	return true;
+}
